@@ -3,8 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+
+<!--
+<ul>
+  <li>カラーを選ぶ：<input type="text" name="color" size="30" maxlength="20"></li>
+</ul>
+-->
+
+<!-- step 1 -->  
+<div>
+<input id="name" name="name" type="text" size="40"><br>
+<font>「<span id="target"></span>」</font>
+</div>
+
+<!-- step 2 -->  
+<div>
+<input id="name2" name="name" type="text" size="40"><br>
+<button>button</button>
+<font>「<span id="target2"></span>」</font>
+</div>
+
+
+<!-- step 3 -->  
+<div>
+<p>カテゴリを選んでください</p>
+<select id="target3">
+  <option value="">-----------</option>
+  <option value="カテゴリA">カテゴリA</option>
+  <option value="カテゴリB">カテゴリB</option>
+  <option value="カテゴリC">カテゴリC</option>
+</select>
+<p>ここに表示→<span class="form"></span></p>
+</div>
+
+<!-- step 4 --> 
+  <button type="button" id="blue-button">青色にする</button>
+  <button type="button" id="red-button" onclick="redcolor()">赤色にする</button>
+  <button type="button" id="green-button" onclick="greencolor()">緑色にする</button>
+<div id="box" style="width:100px; height:100px; margin:10px;"></div>
+
+
+<script language="javascript" type="text/javascript">
+  //step 1
+document.addEventListener("DOMContentLoaded", function(){
+  document.onkeyup = function(){
+    document.getElementById("target").innerText = document.getElementById("name").value;
+  }
+});
   
+  //step 2
+$(function(){
+  $("button").click(function(){
+    document.getElementById("target2").innerText = document.getElementById("name2").value;
+  });
+});
+
+ //step 3 
+$(function(){
+  $("select").change(function(){
+    var val = $(this).val();
+    $('.form').text(val);
+  });
+});
+
+  //step 4
+var box = document.getElementById("box");
+$(function(){
+  $("#blue-button").click(function() {
+    box.style.backgroundColor = "blue";
+  });
+});
+function redcolor() {
+  box.style.backgroundColor = "red";
+}
+function greencolor() {
+  box.style.backgroundColor = "green";
+}
+ </script>
+ 
+
 </body>
 </html>
