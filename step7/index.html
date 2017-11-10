@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<form>
+    <select id="select1">
+		<option value="">フルーツ</option>    
+    </select>
+    <select id="select2" disabled="disabled">
+		<option value="">野菜</option>    
+    </select>
+</form>
+
+<script type="text/javascript" language="JavaScript">
+ var feedArray = [
+ {key: 'フルーツ', 
+  values: [
+  'リンゴ', 'バナナ', 'モモ'
+  ]
+  }, 
+  {key: '野菜', 
+  values: [
+  'キュウリ', 'キャベツ', 'レタス', 'ニンジン'
+  ] 
+  }
+  ];
+  
+  console.log(feedArray);
+
+  $(function(){
+    for (var i in feedArray){
+      $("#select1").append('<option value="' + feedArray[i].key + '">' + feedArray[i].key + '</option>');
+      }
+
+    //カテゴリが変更されたら要素を入れ替え
+    $("#select1").change(function(){
+        $("#select2").empty();
+        for (var i in feedArray){
+            if(feedArray[i].key == $(this).val()){
+			    for (var j in feedArray[i].values){
+ 			   		$("#select2").append('<option value="' + feedArray[i].key + '">' + feedArray[i].key + '</option>');
+    			   }
+            }
+    	     }
+      if($(this).val()){
+			$("#select2").removeAttr("disabled");//触れるように
+        } 
+    });
+});
+
+</script>
+
+  
+ 
+
+</body>
+</html>
