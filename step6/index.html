@@ -12,11 +12,22 @@
 
 
 <script language="javascript" type="text/javascript">
-var foodstuff = {vegetables: ['キュウリ', 'キャベツ', 'レタス', 'ニンジン'], fruits: ['リンゴ', 'バナナ', 'モモ', 'イチゴ']};
   $(function(){
-      $("#step5").html("<p>" + foodstuff.vegetables + "</p>");
-  });
+    var foodstuff = {vegetables: ['キュウリ', 'キャベツ', 'レタス', 'ニンジン'], fruits: ['リンゴ', 'バナナ', 'モモ', 'イチゴ']};
+    　for (var i = 0; i < foodstuff.vegetables.length; i++){
+       console.log(foodstuff.vegetables[i])
+      $("#step5").html("<p>" + foodstuff.vegetables + "</p>");  
+     }
+  });    
+    $(function(){
+      var foods = {food: [{vegetables: ['キュウリ', 'キャベツ', 'レタス', 'ニンジン']}, {fruits: ['リンゴ', 'バナナ', 'モモ', 'イチゴ']}] };
+      for (var i = 0; i < foods.food[1].fruits.length; i++){
+        console.log(foods.food[1].fruits[i]);
+      }
+    });
 </script>
+
+
   
  
 

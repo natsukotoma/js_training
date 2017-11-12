@@ -9,48 +9,28 @@
 
 <form>
     <select id="select1">
-		<option value="">フルーツ</option>    
+		<option value=""> - </option>    
     </select>
-    <select id="select2" disabled="disabled">
-		<option value="">野菜</option>    
+    <select id="select2">
+		<option value=""> - </option>    
     </select>
 </form>
 
-<script type="text/javascript" language="JavaScript">
- var feedArray = [
- {key: 'フルーツ', 
-  values: [
-  'リンゴ', 'バナナ', 'モモ'
-  ]
-  }, 
-  {key: '野菜', 
-  values: [
-  'キュウリ', 'キャベツ', 'レタス', 'ニンジン'
-  ] 
-  }
-  ];
-  
-  console.log(feedArray);
+<script type="text/javascript" language="JavaScript">  
 
   $(function(){
-    for (var i in feedArray){
-      $("#select1").append('<option value="' + feedArray[i].key + '">' + feedArray[i].key + '</option>');
-      }
-
-    //カテゴリが変更されたら要素を入れ替え
-    $("#select1").change(function(){
-        $("#select2").empty();
-        for (var i in feedArray){
-            if(feedArray[i].key == $(this).val()){
-			    for (var j in feedArray[i].values){
- 			   		$("#select2").append('<option value="' + feedArray[i].key + '">' + feedArray[i].key + '</option>');
-    			   }
-            }
-    	     }
-      if($(this).val()){
-			$("#select2").removeAttr("disabled");//触れるように
-        } 
-    });
+    var feedArray = {key: 'フルーツ', values: ['リンゴ', 'バナナ', 'モモ'] };
+      console.log(feedArray.key);
+      $("#select1").append('<option value="' + feedArray.key + '">' + feedArray.key + '</option>');
+    
+    var option_values = feedArray.values[i],
+        options_str="";
+    
+    for(var i = 0; i < feedArray.values.length; i++){
+    console.log(feedArray.values[i])
+      options_str += "<option value='" + feedArray.values[i] + "'>" + feedArray.values[i] + "</option>"
+    };
+    $("#select2").append(options_str);
 });
 
 </script>
